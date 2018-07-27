@@ -114,9 +114,7 @@ img {
   li {
     @extend %font-lg-sc;
     @media #{$sm-screen} {
-      padding: 1.5em 0;
-    font-size: 1em;
-    list-style: none;
+      @extend %font-sm-sc;
     }
   }
   input[type="checkbox"]{

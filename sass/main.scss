@@ -1,29 +1,45 @@
+@import "placeholders";
+@import "variables";
+
 body {
   background: white;
-  /*color: #cdcdcd;*/
   font-family: "Avenir Next", "Avenir", sans-serif;
   width: 100%;
   overflow-x: hidden;
   margin: 0;
 }
 
-#logo {
-  background: #549cd3;
-  padding: 2%;
-}
-
 p, label, li {
   color: white;
 }
 
-img {
-  margin-right: 1em;
+#logo {
+  background: #549cd3;
+  padding: 2%;
+  p {
+    font-size: 2em;
+    @media #{$sm-screen} {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: .3em;
+  margin:0px 1em;
 }
 
 #welcome {
   height: 5%;
   background: linear-gradient(to right, #346992, #ededed);
   padding: 10px 0  50px 10px;
+}
+
+img {
+  margin-right: 1em;
 }
 
 #menuToggle {
@@ -34,9 +50,6 @@ img {
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
-}
-
-#menuToggle {
   input {
     display: block;
     width: 40px;
@@ -79,43 +92,93 @@ img {
       transform: rotate(-45deg) translate(0, -1px);
     }
   }
+  input:checked ~ div{
+    transform: none;
+  }
 }
 
-
-
-/*Safety + Administration menus that slide in from right*/
-
-
+#menu {
+  position: absolute;
+  width: 96%;
+  margin: -80px 0 0 -50px;
+  padding: 2%;
+  padding-top: 125px;
+  background: #155e96;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  overflow-x: hidden;
+  li {
+    @extend %font-lg-sc;
+    @media #{$sm-screen} {
+      padding: 1.5em 0;
+    font-size: 1em;
+    list-style: none;
+    }
+  }
+  input[type="checkbox"]{
+  display: none;
+  } 
+}
 
 .item {
   border-bottom: 2px solid white;
-  // margin-right: 1em;
+  .arrow {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  }
+  label {
+    text-transform: uppercase;
+    @media #{$lg-screen} {
+      padding: 20px;
+      font-size: 22px;
+      line-height: 60px;
+    }
+    @media #{$sm-screen} {
+    padding: .5em;
+    font-size: 1.25em;
+    line-height: 3em;
+    }
+  }
+  input:checked ~ div {
+    display: block;
+  }
 }
 
-/*Slide it in from the left*/
-
-#menuToggle input:checked ~ div, .sub-menuToggle input:checked ~ div {
+.sub-menuToggle input:checked ~ div {
   transform: none;
 }
 
-/*Sub-menu slide from right*/
 
-/*arrow*/
-
-.arrow {
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: .3em;
-  margin:0px 1em;
-}
-
-.item .arrow {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
+.sub-menu {
+  position: absolute;
+  width: 72%;
+  background: #155e96;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 2;
+  border: 2px solid white;
+  margin: -110px 40px 0 350px;
+  @media #{$sm-screen} {
+    margin: -110px 40px 0 100px;
+  }
 }
 
 .sub-item {
+  li, label {
+    @extend %font-lg-sc;
+    @media #{$sm-screen} {
+      padding: 1.5em 0;
+    font-size: 1em;
+    list-style: none;
+    }
+  }
   .arrow {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
@@ -129,127 +192,7 @@ img {
   ul {
     display: none;
   }
-}
-
-/*Functionality
-/*hides all checkboxes and links by default*/
-
-#menu input[type="checkbox"]{
-  display: none;
-}
-
-/*to expand dropdown menus check box is checked*/
-
-.item input:checked ~ div, .sub-item input:checked ~ ul {
-  display: block;
-}
-
-/*/////// BIG SCREEN ///////*/
-@media (min-width: 601px) {
-  #logo p {
-    font-size: 2em;
+  input:checked ~ ul {
+    display: block;
   }
-  #menu li {
-    padding: 1em 0;
-    font-size: 1em;
-    list-style: none;
-  }
-  .sub-item {
-    li, label {
-      padding: 1em 0;
-      font-size: 1em;
-      list-style: none;
-    }
-  }
-  .item label {
-    padding: 20px;
-    font-size: 22px;
-    line-height: 60px;
-    text-transform: uppercase;
-  }
-
-  #menu {
-  position: absolute;
-  width: 96%;
-  margin: -80px 0 0 -50px;
-  padding: 2%;
-  padding-top: 125px;
-  background: #155e96;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  overflow-x: hidden;
-}
-
-  .sub-menu {
-  position: absolute;
-  width: 72%;
-  margin: -110px 40px 0 350px;
-  background: #155e96;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  transform-origin: 0% 0%;
-  transform: translate(100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  z-index: 2;
-  border: 2px solid white;
-}
-}
-
-/*/////// SMALL SCREEN ///////*/
-@media (max-width: 600px) {
-  #logo p {
-    font-size: 1.5em;
-  }
-  #menu li {
-    padding: 1.5em 0;
-    font-size: 1em;
-    list-style: none;
-  }
-  .sub-item {
-    li, label {
-      padding: 1.5em 0;
-      font-size: 1em;
-      list-style: none;
-    }
-  }
-  .item label {
-    padding: .5em;
-    font-size: 1.25em;
-    line-height: 3em;
-    text-transform: uppercase;
-  }
-
-   #menu {
-  position: absolute;
-  width: 96%;
-  margin: -80px 0 0 -50px;
-  padding: 2%;
-  padding-top: 125px;
-  background: #155e96;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  overflow-x: hidden;
-}
-
-  .sub-menu {
-  position: absolute;
-  width: 72%;
-  margin: -110px 40px 0 100px;
-  background: #155e96;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  transform-origin: 0% 0%;
-  transform: translate(100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  z-index: 2;
-  border: 2px solid white;
-}
 }

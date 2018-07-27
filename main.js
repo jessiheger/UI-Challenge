@@ -1,12 +1,4 @@
-// $(document).ready(function (){
-//     $("#menuToggle").click(function (){
-//         $('html, body').animate({
-//             scrollTop: $("#menu").offset().top
-//         }, 1000);
-//     });
-// });
-
-
+// Scroll to view full menu; scroll back to top
 $(document).ready(function() {
     $('#menuToggle > input').change(function() {
         if(this.checked) {
@@ -15,9 +7,10 @@ $(document).ready(function() {
         }, 500); 
     };
     if(!this.checked) {
-            $('html, body').animate({
-            scrollTop: $("#logo").offset().top
-        }, 500); 
+            $('html, body').animate({scrollTop: '0px'}, 500);
+ 
     };
 });
 });
+
+

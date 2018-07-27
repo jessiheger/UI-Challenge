@@ -1,17 +1,23 @@
 body {
-  background: #549cd3;
+  background: white;
   /*color: #cdcdcd;*/
   font-family: "Avenir Next", "Avenir", sans-serif;
   width: 100%;
   overflow-x: hidden;
+  margin: 0;
 }
 
 #logo {
-  margin: 2%;
+  background: #549cd3;
+  padding: 2%;
 }
 
 p, label, li {
   color: white;
+}
+
+img {
+  margin-right: 1em;
 }
 
 #welcome {
@@ -28,10 +34,6 @@ p, label, li {
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
-}
-
-.sub-menuToggle {
-  // position: relative;
 }
 
 #menuToggle {
@@ -104,7 +106,8 @@ p, label, li {
   border: solid white;
   border-width: 0 3px 3px 0;
   display: inline-block;
-  padding: 3px;
+  padding: .3em;
+  margin:0px 1em;
 }
 
 .item .arrow {
@@ -118,10 +121,10 @@ p, label, li {
     -webkit-transform: rotate(45deg);
     transition: 0.1s;
   }
-  input:checked + .arrow {
+  input:checked ~ .arrow {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
-    transition: 0.1s;
+    transition: 0.5s;
   }
   ul {
     display: none;
@@ -184,7 +187,7 @@ p, label, li {
   .sub-menu {
   position: absolute;
   width: 72%;
-  margin: -110px 40px 0 300px;
+  margin: -110px 40px 0 350px;
   background: #155e96;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
@@ -239,7 +242,7 @@ p, label, li {
   .sub-menu {
   position: absolute;
   width: 72%;
-  margin: -110px 40px 0 90px;
+  margin: -110px 40px 0 100px;
   background: #155e96;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;

@@ -1,0 +1,228 @@
+body {
+  background: #549cd3;
+  /*color: #cdcdcd;*/
+  font-family: "Avenir Next", "Avenir", sans-serif;
+}
+
+#logo {
+  margin: 2%;
+}
+
+p, label, li {
+  color: white;
+}
+
+#welcome {
+  height: 5%;
+  background: linear-gradient(to right, #346992, #ededed);
+  padding: 10px 0  50px 10px;
+}
+
+#menuToggle {
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.sub-menuToggle {
+  position: relative;
+}
+
+#menuToggle {
+  input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+  span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+    &:first-child {
+      transform-origin: 0% 0%;
+    }
+    &:nth-last-child(2) {
+      transform-origin: 0% 100%;
+    }
+  }
+  input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+    &:nth-last-child(3) {
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+    }
+    &:nth-last-child(2) {
+      transform: rotate(-45deg) translate(0, -1px);
+    }
+  }
+}
+
+/* Hamburger Menu */
+
+/*Transform hamburger into an X.*/
+
+/*Hide middle span*/
+
+/*ENTIRE MENU*/
+
+#menu {
+  position: absolute;
+  width: 100%;
+  margin: -80px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  background: #155e96;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  overflow-y: scroll;
+}
+
+/*Safety + Administration menus that slide in from right*/
+
+.sub-menu {
+  position: absolute;
+  width: 80%;
+  margin: -110px 40px 0 70px;
+  background: #155e96;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 2;
+  border: 2px solid white;
+}
+
+.item {
+  border-bottom: 2px solid white;
+  margin-right: 1em;
+}
+
+/*Slide it in from the left*/
+
+#menuToggle input:checked ~ div, .sub-menuToggle input:checked ~ div {
+  transform: none;
+}
+
+/*Sub-menu slide from right*/
+
+/*arrow*/
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.item .arrow {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.sub-item {
+  .arrow {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transition: 0.1s;
+  }
+  input:checked + .arrow {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transition: 0.1s;
+  }
+  ul {
+    display: none;
+  }
+}
+
+/*Selects all .arrow elements that are placed immediately after .sub-item elements*/
+
+/*Functionality
+/*hides all checkboxes and links by default*/
+
+#menu input[type="checkbox"], .sub-menu {
+  display: none;
+}
+
+/*to expand dropdown menus check box is checked*/
+
+.item input:checked ~ div, .sub-item input:checked ~ ul {
+  display: block;
+}
+
+/*/////// BIG SCREEN ///////*/
+@media (min-width: 601px) {
+  #logo p {
+    font-size: 2em;
+  }
+  #menu li {
+    padding: 1em 0;
+    font-size: 1em;
+    list-style: none;
+  }
+  .sub-item {
+    li, label {
+      padding: 1em 0;
+      font-size: 1em;
+      list-style: none;
+    }
+  }
+  .item label {
+    padding: 20px;
+    font-size: 22px;
+    line-height: 60px;
+    text-transform: uppercase;
+  }
+}
+
+/*/////// SMALL SCREEN ///////*/
+@media (max-width: 600px) {
+  #logo p {
+    font-size: 1.5em;
+  }
+  #menu li {
+    padding: 1.5em 0;
+    font-size: 1em;
+    list-style: none;
+  }
+  .sub-item {
+    li, label {
+      padding: 1.5em 0;
+      font-size: 1em;
+      list-style: none;
+    }
+  }
+  .item label {
+    padding: .5em;
+    font-size: 1.25em;
+    line-height: 3em;
+    text-transform: uppercase;
+  }
+}

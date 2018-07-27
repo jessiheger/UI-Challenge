@@ -2,6 +2,8 @@ body {
   background: #549cd3;
   /*color: #cdcdcd;*/
   font-family: "Avenir Next", "Avenir", sans-serif;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 #logo {
@@ -29,7 +31,7 @@ p, label, li {
 }
 
 .sub-menuToggle {
-  position: relative;
+  // position: relative;
 }
 
 #menuToggle {
@@ -42,9 +44,7 @@ p, label, li {
     left: -5px;
     cursor: pointer;
     opacity: 0;
-    /* hide this */
     z-index: 2;
-    /* and place it over the hamburger */
     -webkit-touch-callout: none;
   }
   span {
@@ -79,49 +79,15 @@ p, label, li {
   }
 }
 
-/* Hamburger Menu */
 
-/*Transform hamburger into an X.*/
-
-/*Hide middle span*/
-
-/*ENTIRE MENU*/
-
-#menu {
-  position: absolute;
-  width: 100%;
-  margin: -80px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  background: #155e96;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  overflow-y: scroll;
-}
 
 /*Safety + Administration menus that slide in from right*/
 
-.sub-menu {
-  position: absolute;
-  width: 80%;
-  margin: -110px 40px 0 70px;
-  background: #155e96;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  transform-origin: 0% 0%;
-  transform: translate(100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  z-index: 2;
-  border: 2px solid white;
-}
+
 
 .item {
   border-bottom: 2px solid white;
-  margin-right: 1em;
+  // margin-right: 1em;
 }
 
 /*Slide it in from the left*/
@@ -162,12 +128,10 @@ p, label, li {
   }
 }
 
-/*Selects all .arrow elements that are placed immediately after .sub-item elements*/
-
 /*Functionality
 /*hides all checkboxes and links by default*/
 
-#menu input[type="checkbox"], .sub-menu {
+#menu input[type="checkbox"]{
   display: none;
 }
 
@@ -200,6 +164,36 @@ p, label, li {
     line-height: 60px;
     text-transform: uppercase;
   }
+
+  #menu {
+  position: absolute;
+  width: 96%;
+  margin: -80px 0 0 -50px;
+  padding: 2%;
+  padding-top: 125px;
+  background: #155e96;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  overflow-x: hidden;
+}
+
+  .sub-menu {
+  position: absolute;
+  width: 72%;
+  margin: -110px 40px 0 300px;
+  background: #155e96;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 2;
+  border: 2px solid white;
+}
 }
 
 /*/////// SMALL SCREEN ///////*/
@@ -225,4 +219,34 @@ p, label, li {
     line-height: 3em;
     text-transform: uppercase;
   }
+
+   #menu {
+  position: absolute;
+  width: 96%;
+  margin: -80px 0 0 -50px;
+  padding: 2%;
+  padding-top: 125px;
+  background: #155e96;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  overflow-x: hidden;
+}
+
+  .sub-menu {
+  position: absolute;
+  width: 72%;
+  margin: -110px 40px 0 90px;
+  background: #155e96;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 2;
+  border: 2px solid white;
+}
 }
